@@ -13,11 +13,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "classnames": "^2.2.3",
-    "jquery": "^2.1.4",
-    "lodash": "^3.10.1",
     "react": "^0.14.7",
-    "react-dom": "^0.14.7",
-    "fit-style": "^1.1.45"
+    "classnames": "^2.2.1",
+    "lodash": "^3.10.1",
+    "react-dom": "^0.14.7"
   }
 }
