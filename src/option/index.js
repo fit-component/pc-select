@@ -45,7 +45,12 @@ export default class Option extends React.Component {
 }
 
 Option.defaultProps = {
+    // @desc 是否处于激活状态
     active: false,
+
+    // @desc 当前查询的值
     searchValue: '',
+
+    // @desc 是否禁用
     disabled: false
 }

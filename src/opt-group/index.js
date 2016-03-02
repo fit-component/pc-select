@@ -27,6 +27,9 @@ export default class OptGroup extends React.Component {
 }
 
 OptGroup.defaultProps = {
+    // @desc 样式
     style: {},
+
+    // @desc 查询值
     searchValue: ''
 }

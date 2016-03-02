@@ -161,8 +161,7 @@ export default class Select extends React.Component {
             return (
                 <div style={this.props.style}
                      className="form-container">
-                    <label style={{width:this.props.labelWidth||null}}
-                           className="form-control-label">{this.props.label}</label>
+                    <label style={{width:this.props.labelWidth||null,marginRight:10}}>{this.props.label}</label>
                     {SelectContent}
                 </div>
             )
@@ -192,12 +191,25 @@ export default class Select extends React.Component {
 }
 
 Select.defaultProps = {
+    // @desc 宽度
     width: 200,
+
+    // @desc 样式
     style: {},
+
+    // @desc 选择后的回调
     onChange: (value)=> {
     },
+
+    // @desc 是否可筛选
     search: false,
+
+    // @desc 极简模式,适合在文本中做选择框
     simple: false,
+
+    // @desc 值
     value: null,
+
+    // @desc 初始值
     defaultValue: null
 }
