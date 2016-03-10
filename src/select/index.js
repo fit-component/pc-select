@@ -74,10 +74,16 @@ export default class Select extends React.Component {
     }
 
     render() {
+        const {className, width, search, placeholder, children, simple, label, labelWidth, addonLeft, addonRight, ...others} = this.props
+        const classes = classNames({
+            '_namespace': true,
+            [className]: className
+        })
+
         let chosenDropStyle = {
             display: this.state.open ? null : 'none',
             left: 0,
-            width: this.props.width
+            width: width
         }
 
         let chosenSingleClass = classNames({
@@ -87,7 +93,7 @@ export default class Select extends React.Component {
 
         // 搜索框
         let Search = null
-        if (this.props.search === true) {
+        if (search === true) {
             Search = (
                 <div className="chosen-search">
                     <input id="j-search"
@@ -95,7 +101,7 @@ export default class Select extends React.Component {
                            type="text"
                            value={this.state.searchValue}
                            autoComplete="off"
-                           placeholder={this.props.placeholder}
+                           placeholder={placeholder}
                            onChange={this.handleSearchChange.bind(this)}/>
                 </div>
             )
@@ -103,7 +109,7 @@ export default class Select extends React.Component {
 
         // 循环子元素,同时获取value,同时判断search
         let valueLabel = ""
-        let Children = React.Children.map(this.props.children, (item, index)=> {
+        let Children = React.Children.map(children, (item, index)=> {
             let active = false
             if (item.props.value === this.state.value) {
                 valueLabel = item.props.children
@@ -131,14 +137,16 @@ export default class Select extends React.Component {
         let chosenContainerClass = classNames({
             'chosen-container': true,
             'chosen-container-single': true,
-            'simple': this.props.simple
+            'simple': simple
         })
 
+        others.style = others.style || {}
+        others.style.width = others.style.width || width
+
         let SelectContent = (
-            <div className="_namespace"
-                 style={{width:this.props.width}}>
+            <div {...others} className={classes}>
                 <div className={chosenContainerClass}
-                     style={{width:this.props.simple?null:this.props.width}}>
+                     style={{width:simple?null:width}}>
                     <a className={chosenSingleClass}
                        tabIndex="-1"
                        onClick={this.handleSelectClick.bind(this)}><span>{valueLabel}</span>
@@ -157,45 +165,38 @@ export default class Select extends React.Component {
             </div>
         )
 
-        if (!_.isEmpty(this.props.label)) {
+        if (!_.isEmpty(label)) {
             return (
-                <div style={this.props.style}
-                     className="form-container">
-                    <label style={{width:this.props.labelWidth||null,marginRight:10}}>{this.props.label}</label>
+                <div className="form-container">
+                    <label style={{width:labelWidth||null,marginRight:10}}>{label}</label>
                     {SelectContent}
                 </div>
             )
         }
 
-        if (!_.isEmpty(this.props.addonLeft) || !_.isEmpty(this.props.addonRight)) {
+        if (!_.isEmpty(addonLeft) || !_.isEmpty(addonRight)) {
             return (
-                <form style={this.props.style}
-                      className="form-inline">
+                <form className="form-inline">
                     <div className="form-group">
                         <div className="input-group">
-                            {_.isEmpty(this.props.addonLeft) ? null :
-                                <div className="input-group-addon">{this.props.addonLeft}</div>}
+                            {_.isEmpty(addonLeft) ? null :
+                                <div className="input-group-addon">{addonLeft}</div>}
                             {SelectContent}
-                            {_.isEmpty(this.props.addonRight) ? null :
-                                <div className="input-group-addon">{this.props.addonRight}</div>}
+                            {_.isEmpty(addonRight) ? null :
+                                <div className="input-group-addon">{addonRight}</div>}
                         </div>
                     </div>
                 </form>
             )
         }
 
-        return React.cloneElement(SelectContent, {
-            style: this.props.style
-        })
+        return SelectContent
     }
 }
 
 Select.defaultProps = {
     // @desc 宽度
     width: 200,
-
-    // @desc 样式
-    style: {},
 
     // @desc 选择后的回调
     onChange: (value)=> {

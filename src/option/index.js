@@ -15,21 +15,24 @@ export default class Option extends React.Component {
     }
 
     render() {
-        let classname = classNames({
+        const {className, active, disabled, searchValue, children, ...others} = this.props
+        const classes = classNames({
             '_namespace': true,
             'active-result': true,
             'group-option': true,
-            'active': this.props.active,
-            'disabled': this.props.disabled
+            'active': active,
+            'disabled': disabled,
+            [className]: className
         })
 
-        if (!_.isEmpty(this.props.searchValue)) {
-            let regex = reg(this.props.searchValue)
-            if (regex.test(this.props.children)) {
-                let matchedString = this.props.children.replace(regex, '<span class="active">' + this.props.searchValue + '</span>')
+        if (!_.isEmpty(searchValue)) {
+            let regex = reg(searchValue)
+            if (regex.test(children)) {
+                let matchedString = children.replace(regex, '<span class="active">' + searchValue + '</span>')
                 return (
                     <li onClick={this.handleClick.bind(this)}
-                        className={classname}
+                        {...others}
+                        className={classes}
                         dangerouslySetInnerHTML={{__html: matchedString}}></li>
                 )
             } else {
@@ -38,8 +41,8 @@ export default class Option extends React.Component {
         }
 
         return (
-            <li onClick={this.handleClick.bind(this)}
-                className={classname}>{this.props.children}</li>
+            <li {...others} onClick={this.handleClick.bind(this)}
+                            className={classes}>{this.props.children}</li>
         )
     }
 }
