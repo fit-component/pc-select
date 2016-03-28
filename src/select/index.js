@@ -189,7 +189,10 @@ export default class Select extends React.Component {
             )
         }
 
-        return SelectContent
+        return (
+            <div {...others}
+                className={classes}>{SelectContent}</div>
+        )
     }
 }
 

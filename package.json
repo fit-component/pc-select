@@ -1,6 +1,6 @@
 {
   "name": "fit-select",
-  "version": "2.0.53",
+  "version": "2.0.54",
   "description": "选择框",
   "main": "lib/index.js",
   "scripts": {
