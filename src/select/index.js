@@ -10,8 +10,8 @@ export default class Select extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            open: false,
-            value: this.props.value || this.props.defaultValue,
+            open       : false,
+            value      : this.props.value || this.props.defaultValue,
             searchValue: ''
         }
 
@@ -59,7 +59,7 @@ export default class Select extends React.Component {
     // 选择栏目点击
     handleClick(value) {
         this.setState({
-            open: false,
+            open : false,
             value: value
         }, ()=> {
             this.props.onChange(value)
@@ -76,19 +76,21 @@ export default class Select extends React.Component {
     render() {
         const {className, width, search, placeholder, children, simple, label, labelWidth, addonLeft, addonRight, ...others} = this.props
         const classes = classNames({
-            '_namespace': true,
-            [className]: className
+            '_namespace'    : true,
+            'form-container': !_.isEmpty(label),
+            'form-inline'   : !_.isEmpty(addonLeft) || !_.isEmpty(addonRight),
+            [className]     : className
         })
 
         let chosenDropStyle = {
             display: this.state.open ? null : 'none',
-            left: 0,
-            width: width
+            left   : 0,
+            width  : width
         }
 
         let chosenSingleClass = classNames({
             'chosen-single': true,
-            'active': this.state.open
+            'active'       : this.state.open
         })
 
         // 搜索框
@@ -126,25 +128,25 @@ export default class Select extends React.Component {
             }
 
             return React.cloneElement(item, {
-                onClick: this.handleClick.bind(this),
-                key: index,
-                active: active,
+                onClick    : this.handleClick.bind(this),
+                key        : index,
+                active     : active,
                 activeValue: this.state.value,
                 searchValue: this.state.searchValue
             })
         })
 
         let chosenContainerClass = classNames({
-            'chosen-container': true,
+            'chosen-container'       : true,
             'chosen-container-single': true,
-            'simple': simple
+            'simple'                 : simple
         })
 
         others.style = others.style || {}
         others.style.width = others.style.width || width
 
         let SelectContent = (
-            <div {...others} className={classes}>
+            <div>
                 <div className={chosenContainerClass}
                      style={{width:simple?null:width}}>
                     <a className={chosenSingleClass}
@@ -167,7 +169,8 @@ export default class Select extends React.Component {
 
         if (!_.isEmpty(label)) {
             return (
-                <div className="form-container">
+                <div {...others}
+                    className={classes}>
                     <label style={{width:labelWidth||null,marginRight:10}}>{label}</label>
                     {SelectContent}
                 </div>
@@ -176,7 +179,8 @@ export default class Select extends React.Component {
 
         if (!_.isEmpty(addonLeft) || !_.isEmpty(addonRight)) {
             return (
-                <form className="form-inline">
+                <form {...others}
+                    className={classes}>
                     <div className="form-group">
                         <div className="input-group">
                             {_.isEmpty(addonLeft) ? null :
