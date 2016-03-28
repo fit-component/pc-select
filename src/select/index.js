@@ -142,9 +142,6 @@ export default class Select extends React.Component {
             'simple'                 : simple
         })
 
-        others.style = others.style || {}
-        others.style.width = others.style.width || width
-
         let SelectContent = (
             <div className={chosenContainerClass}
                  style={{width:simple?null:width}}>
