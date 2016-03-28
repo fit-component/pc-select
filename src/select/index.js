@@ -146,23 +146,21 @@ export default class Select extends React.Component {
         others.style.width = others.style.width || width
 
         let SelectContent = (
-            <div>
-                <div className={chosenContainerClass}
-                     style={{width:simple?null:width}}>
-                    <a className={chosenSingleClass}
-                       tabIndex="-1"
-                       onClick={this.handleSelectClick.bind(this)}><span>{valueLabel}</span>
-                        <div><b></b></div>
-                    </a>
+            <div className={chosenContainerClass}
+                 style={{width:simple?null:width}}>
+                <a className={chosenSingleClass}
+                   tabIndex="-1"
+                   onClick={this.handleSelectClick.bind(this)}><span>{valueLabel}</span>
+                    <div><b></b></div>
+                </a>
 
-                    <div id="j-chosen"
-                         className="chosen-drop"
-                         style={chosenDropStyle}>
-                        {Search ? Search : null}
-                        <ul className="chosen-results">
-                            {Children}
-                        </ul>
-                    </div>
+                <div id="j-chosen"
+                     className="chosen-drop"
+                     style={chosenDropStyle}>
+                    {Search ? Search : null}
+                    <ul className="chosen-results">
+                        {Children}
+                    </ul>
                 </div>
             </div>
         )
