@@ -8,7 +8,7 @@ export default class Demo extends React.Component {
 
     render() {
         return (
-            <Select width="300"
+            <Select width={300}
                     value="b"
                     onChange={this.handleChange.bind(this)}>
                 <Option value="a">小明</Option>

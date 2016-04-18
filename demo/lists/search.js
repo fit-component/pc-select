@@ -4,7 +4,7 @@ import { Select, Option, OptGroup } from 'fit-select'
 export default class Demo extends React.Component {
     render() {
         return (
-            <Select width="300"
+            <Select width={300}
                     value="b"
                     search>
                 <OptGroup label="管理员">

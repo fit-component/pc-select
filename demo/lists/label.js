@@ -5,7 +5,7 @@ export default class Demo extends React.Component {
     render() {
         return (
             <div>
-                <Select width="300"
+                <Select width={300}
                         value="a"
                         label="姓名">
                     <Option value="a">小明</Option>
@@ -16,7 +16,7 @@ export default class Demo extends React.Component {
                     <Option value="f">小刚</Option>
                 </Select>
 
-                <Select width="300"
+                <Select width={300}
                         style={{marginTop:10}}
                         value="a"
                         addonLeft="左侧"
