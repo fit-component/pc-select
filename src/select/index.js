@@ -5,6 +5,7 @@ import $ from 'jquery'
 import _ from 'lodash'
 import './index.scss'
 import './chosen.scss'
+import './button-group.scss'
 
 export default class Select extends React.Component {
     constructor(props) {

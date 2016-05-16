@@ -17,12 +17,12 @@ export default class Option extends React.Component {
     render() {
         const {className, active, disabled, searchValue, children, ...others} = this.props
         const classes = classNames({
-            '_namespace': true,
+            '_namespace'   : true,
             'active-result': true,
-            'group-option': true,
-            'active': active,
-            'disabled': disabled,
-            [className]: className
+            'group-option' : true,
+            'active'       : active,
+            'disabled'     : disabled,
+            [className]    : className
         })
 
         if (!_.isEmpty(searchValue)) {
@@ -30,8 +30,8 @@ export default class Option extends React.Component {
             if (regex.test(children)) {
                 let matchedString = children.replace(regex, '<span class="active">' + searchValue + '</span>')
                 return (
-                    <li onClick={this.handleClick.bind(this)}
-                        {...others}
+                    <li {...others}
+                        onClick={this.handleClick.bind(this)}
                         className={classes}
                         dangerouslySetInnerHTML={{__html: matchedString}}></li>
                 )
