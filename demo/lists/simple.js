@@ -8,16 +8,20 @@ export default class Demo extends React.Component {
 
     render() {
         return (
-            <Select value="b"
-                    simple
-                    onChange={this.handleChange.bind(this)}>
-                <Option value="a">小明</Option>
-                <Option value="b">小红</Option>
-                <Option value="c">小白</Option>
-                <Option value="d">小王</Option>
-                <Option value="e">小李</Option>
-                <Option value="f">小刚</Option>
-            </Select>
+            <div>
+                请选择
+                <Select value="b"
+                        simple
+                        onChange={this.handleChange.bind(this)}>
+                    <Option value="a">小明</Option>
+                    <Option value="b">小红</Option>
+                    <Option value="c">小白</Option>
+                    <Option value="d">小王</Option>
+                    <Option value="e">小李</Option>
+                    <Option value="f">小刚</Option>
+                </Select>
+                其中的一项?
+            </div>
         )
     }
 }
