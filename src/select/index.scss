@@ -1,39 +1,73 @@
+@import "../../../../../style/reset";
+
+._global {
+    @font-face {
+        font-family: 'fit-select';
+        src: url('./font/fit-select.eot?tuggmf');
+        src: url('./font/fit-select.eot?tuggmf#iefix') format('embedded-opentype'),
+        url('./font/fit-select.ttf?tuggmf') format('truetype'),
+        url('./font/fit-select.woff?tuggmf') format('woff'),
+        url('./font/fit-select.svg?tuggmf#fit-select') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    [class^="fit-select-"], [class*=" fit-select-"] {
+        /* use !important to prevent issues with browser extensions that change fonts */
+        font-family: 'fit-select' !important;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .fit-select-drop:before {
+        content: "\ea1c";
+    }
+
+}
+
 & {
-    display: inline-block;
-    .chosen-single {
-        transition: border linear .2s, box-shadow linear .2s;
-        &.active {
-            border: 1px solid #66afe9 !important;
-            box-shadow: 0 1px 1px rgba(0, 0, 0, .075) inset, 0 0 8px rgba(82, 168, 236, .6) !important;
-        }
-    }
-}
-
-.search-input {
-    box-sizing: border-box;
-    padding: 2px 10px !important;
-    &:focus {
-        border-color: #66afe9 !important;
-    }
-}
-
-.group-option {
-    .active {
-        color: #f05050;
-    }
-}
-
-.chosen-container {
-    cursor: pointer;
-}
-
-// 极简模式
-.simple {
-    .chosen-single {
-        border: none !important;
-        box-shadow: none !important;
+    @include reset;
+    .input {
+        cursor: pointer;
     }
     .chosen-drop {
-        border: none !important;
+        width: 100%;
+        position: absolute;
+        top: 38px;
+        z-index: 10;
+        background: white;
+    }
+    .chosen-results {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        border: 1px solid #ddd;
+        border-top: none;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+    &.simple {
+        display: inline-block;
+        margin: 0;
+        .input {
+            border-color: transparent;
+        }
+    }
+    .search-input {
+        margin: 0;
+        .input {
+            cursor: text;
+        }
+    }
+    .fit-select-drop {
+        color: #666;
     }
 }

@@ -1,7 +1,7 @@
-import React from 'react'
-import { Select, Option, OptGroup } from 'fit-select'
+import * as React from 'react'
+import {Select, Option, OptGroup} from '../../src'
 
-export default class Demo extends React.Component {
+export default class Demo extends React.Component <any,any> {
     render() {
         return (
             <Select width={300}
