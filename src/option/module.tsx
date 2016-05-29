@@ -11,12 +11,18 @@ export interface PropsInterface {
      */
     disabled?: boolean
 
+    /**
+     * 层级,普通是1,级联后一次递增
+     */
+    zIndex?: number
+
     [x: string]: any
 }
 
 export class Props implements PropsInterface {
     value = ''
     disabled = false
+    zIndex = 1
 }
 
 export interface StateInterface {

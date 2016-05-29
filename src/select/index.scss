@@ -71,3 +71,11 @@
         color: #666;
     }
 }
+
+.flex-option-container {
+    display: flex;
+    .chosen-results {
+        width: 0;
+        flex-grow: 1;
+    }
+}

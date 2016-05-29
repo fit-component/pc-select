@@ -4,7 +4,7 @@ import {Select, Option, OptGroup} from '../../src'
 export default class Demo extends React.Component <any,any> {
     render() {
         return (
-            <Select value="a">
+            <Select>
                 <OptGroup label="管理员">
                     <Option value="a">小明</Option>
                     <Option value="b">小红</Option>

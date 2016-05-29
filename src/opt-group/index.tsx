@@ -7,32 +7,40 @@ export default class OptGroup extends React.Component <module.PropsInterface, mo
     static defaultProps: module.PropsInterface = new module.Props()
     public state: module.StateInterface = new module.State()
 
-    handleOptionClick(value: number|string) {
-        this.props['onClick'](value)
+    handleOptionClick(value: number|string, label: string) {
+        this.props['onClick'](value, label)
+    }
+
+    setLabelValue(labelValue: string) {
+        this.props['setLabelValue'](labelValue)
     }
 
     render() {
         const classes = classNames({
             '_namespace': true,
-            'mobile': true,
-            'phone': true,
             [this.props['className']]: !!this.props['className']
         })
 
         // 循环子元素
-        let Children = React.Children.map(this.props['children'], (item: React.ReactElement<any>, index: number)=> {
-            let active = false
-            if (item.props.value === this.props['activeValue']) {
-                active = true
-            }
+        let Children: React.ReactNode = this.props.children
 
-            return React.cloneElement(item, Object.assign({}, item.props, {
-                onClick: this.handleOptionClick.bind(this),
-                key: index,
-                active: active,
-                searchValue: this.props['searchValue']
-            }))
-        })
+        if (!this.props.ignoreChildren) {
+            Children = React.Children.map(this.props['children'], (item: React.ReactElement<any>, index: number)=> {
+                let active = false
+                if (item.props.value === this.props['activeValue']) {
+                    active = true
+                }
+
+                return React.cloneElement(item, Object.assign({}, item.props, {
+                    onClick: this.handleOptionClick.bind(this),
+                    key: index,
+                    active: active,
+                    setLabelValue: this.setLabelValue.bind(this),
+                    activeValue: this.props['activeValue'],
+                    searchValue: this.props['searchValue']
+                }))
+            })
+        }
 
         return (
             <div className={classes}>
