@@ -1,6 +1,6 @@
 {
   "name": "fit-select",
-  "version": "4.0.16",
+  "version": "4.0.17",
   "description": "选择框",
   "main": "lib/index.js",
   "scripts": {

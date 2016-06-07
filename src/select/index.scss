@@ -3,11 +3,11 @@
 ._global {
     @font-face {
         font-family: 'fit-select';
-        src: url('./font/fit-select.eot?tuggmf');
-        src: url('./font/fit-select.eot?tuggmf#iefix') format('embedded-opentype'),
-        url('./font/fit-select.ttf?tuggmf') format('truetype'),
-        url('./font/fit-select.woff?tuggmf') format('woff'),
-        url('./font/fit-select.svg?tuggmf#fit-select') format('svg');
+        src: url('./font/fit-select.eot');
+        src: url('./font/fit-select.eot') format('embedded-opentype'),
+        url('./font/fit-select.ttf') format('truetype'),
+        url('./font/fit-select.woff') format('woff'),
+        url('./font/fit-select.svg') format('svg');
         font-weight: normal;
         font-style: normal;
     }
