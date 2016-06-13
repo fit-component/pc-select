@@ -1,6 +1,6 @@
-@import "../../../../../style/reset";
-
 ._global {
+    @import "../../../../../style/reset";
+    
     @font-face {
         font-family: 'fit-select';
         src: url('./font/fit-select.eot');
@@ -69,6 +69,10 @@
     }
     .fit-select-drop {
         color: #666;
+        transition: all .2s;
+        &.open {
+            transform: rotate(180deg);
+        }
     }
 }
 

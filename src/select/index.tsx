@@ -322,7 +322,11 @@ export default class Select extends React.Component<module.PropsInterface, modul
     }
 
     dropIconRender() {
-        return <i className="fit-select-drop"/>
+        const classes = classNames({
+            'open': this.state.open,
+            'fit-select-drop': true
+        })
+        return <i className={classes}/>
     }
 
     render() {
