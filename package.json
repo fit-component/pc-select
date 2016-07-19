@@ -1,6 +1,6 @@
 {
   "name": "fit-select",
-  "version": "4.0.27",
+  "version": "4.0.29",
   "description": "选择框",
   "main": "lib/index.js",
   "scripts": {
@@ -13,13 +13,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "react": "^15.0.1",
+    "react": "^0.14.0 || ^15.0.0",
     "classnames": "^2.2.3",
     "lodash": "^3.10.1",
-    "fit-transmit-transparently": "^3.1.21",
-    "react-dom": "^15.0.1",
-    "jquery": "^2.1.4",
-    "fit-input": "^5.0.19"
+    "fit-transmit-transparently": "^3.1.23",
+    "react-dom": "^0.14.0 || ^15.0.0",
+    "jquery": "^1.12.4",
+    "fit-input": "^5.0.21"
   },
   "typings": "lib/index.d.ts"
 }
